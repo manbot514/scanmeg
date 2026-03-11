@@ -300,6 +300,133 @@ Via **style.css** du thème enfant (si modifications plus avancées) :
 
 ---
 
+## Animations
+
+Trois effets à implémenter via JavaScript vanilla + CSS. Aucune dépendance lourde sauf Lenis.
+
+### 1. Scroll physique avec inertie — Lenis
+
+Librairie : **Lenis** (légère, ~3kb, MIT).
+
+```js
+import Lenis from '@studio-freight/lenis'
+
+const lenis = new Lenis({
+  duration: 1.2,        // Inertie — ajuster pour plus/moins de fluidité
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smooth: true,
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
+```
+
+S'applique à toutes les pages automatiquement via `main.js`.
+
+---
+
+### 2. Fade-in on scroll — IntersectionObserver
+
+Smooth, pas brutal. Threshold bas pour déclencher tôt, transition longue pour l'élégance.
+
+**CSS :**
+```css
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
+
+**JS :**
+```js
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible')
+      observer.unobserve(entry.target) // Se déclenche une seule fois
+    }
+  })
+}, {
+  threshold: 0.1,     // Déclenche dès 10% visible — pas trop strict
+  rootMargin: '0px 0px -40px 0px'  // Légèrement avant le bas du viewport
+})
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+```
+
+**Éléments qui reçoivent la classe `.reveal` dans les templates :**
+- Cards produits (`.p-card`)
+- Cards catégories (`.cat-c`)
+- Cards services (`.svc-c`)
+- Sections split texte/image
+- Photos et galeries
+- Témoignages
+
+**Éléments qui ne reçoivent PAS `.reveal` :** header, hero, footer — ils sont toujours visibles.
+
+---
+
+### 3. Compteur KPI — JS vanilla
+
+Déclenché quand la bande KPI entre dans le viewport via IntersectionObserver.
+
+```js
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target)  // ex: data-target="5000"
+  const duration = 1800 // ms
+  const start = performance.now()
+
+  function update(now) {
+    const elapsed = now - start
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = 1 - Math.pow(1 - progress, 3) // ease-out cubic
+    el.textContent = Math.floor(eased * target).toLocaleString('fr-CA')
+    if (progress < 1) requestAnimationFrame(update)
+  }
+  requestAnimationFrame(update)
+}
+
+const kpiObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target)
+      kpiObserver.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.5 })
+
+document.querySelectorAll('.kpi-number').forEach(el => kpiObserver.observe(el))
+```
+
+**HTML dans `front-page.php` :**
+```html
+<span class="kpi-number" data-target="5000">5 000</span>
+<!-- Affiche "5 000" par défaut (si JS désactivé), remplacé par le compteur sinon -->
+```
+
+Les suffixes (`+`, `ans`) sont gérés séparément en CSS (`::after`) pour ne pas interférer avec le compteur.
+
+---
+
+### Ordre de chargement dans `main.js`
+
+1. Lenis (scroll inertie) — init immédiate
+2. IntersectionObserver fade-in — après DOMContentLoaded
+3. Compteurs KPI — après DOMContentLoaded
+4. Hamburger menu toggle
+5. Tabs technologie
+
+---
+
 ## Ordre d'implémentation suggéré pour Claude Code
 
 1. Scaffolding du thème (`style.css`, `functions.php`, `header.php`, `footer.php`)
