@@ -339,3 +339,5 @@ img { max-width:100%; display:block; }
 /* Menu mobile ouvert — hors media query pour garantir la priorité */
 .nav.open { display:flex; flex-direction:column; position:absolute; top:68px; left:0; right:0; background:#fff; padding:16px 0; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; z-index:200; gap:0; }
 .nav.open li a { display:block; padding:12px 20px; font-size:.85rem; }
+.nav-lang { display:none; }
+.nav.open .nav-lang { display:flex; padding:12px 20px; border-top:1px solid var(--slate-200); margin-top:8px; }
