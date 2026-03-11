@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScanMeg — Manuels & documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wireframe.css">
+<style>
+/* ── Search bar ── */
+.search-bar { background:var(--slate-50); border-bottom:1px solid var(--slate-200); padding:24px 40px; }
+.search-inner { max-width:1200px; margin:0 auto; display:flex; gap:12px; }
+.search-input { flex:1; background:var(--white); border:1px solid var(--slate-200); border-radius:var(--radius-sm); color:var(--navy); padding:12px 16px; font-size:.84rem; font-family:var(--font-body); transition:.15s; }
+.search-input::placeholder { color:var(--slate-400); }
+.search-input:focus { outline:none; border-color:var(--slate-600); box-shadow:0 0 0 3px rgba(0,0,0,.05); }
+.search-btn { background:var(--navy); color:var(--white); padding:12px 24px; font-family:var(--font-heading); font-size:.72rem; font-weight:700; border:none; border-radius:var(--radius-sm); cursor:pointer; text-transform:uppercase; letter-spacing:1px; transition:.2s; }
+.search-btn:hover { background:var(--navy-light); }
+
+/* ── Filter bar ── */
+.filter-bar { background:var(--navy); padding:14px 40px; }
+.filter-inner { max-width:1200px; margin:0 auto; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.filter-label { font-family:var(--font-heading); font-size:.68rem; font-weight:600; color:var(--slate-400); text-transform:uppercase; letter-spacing:1px; }
+.filter-chip { font-family:var(--font-heading); font-size:.72rem; font-weight:600; background:var(--navy-light); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-sm); padding:6px 16px; color:var(--slate-400); cursor:pointer; transition:.15s; }
+.filter-chip:hover { color:var(--white); border-color:rgba(255,255,255,.25); }
+.filter-chip.active { background:var(--white); color:var(--navy); border-color:var(--white); }
+
+/* ── Doc layout ── */
+.doc-wrap { max-width:1200px; margin:0 auto; }
+.doc-layout { display:grid; grid-template-columns:240px 1fr; min-height:500px; }
+
+/* ── Sidebar ── */
+.doc-sidebar { background:var(--slate-50); border-right:1px solid var(--slate-200); padding:32px 0; }
+.doc-sidebar-heading { font-family:var(--font-heading); font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--slate-500); padding:0 24px 10px; }
+.doc-sidebar-nav { list-style:none; }
+.doc-sidebar-nav li a { display:block; padding:10px 24px; text-decoration:none; color:var(--slate-600); font-size:.82rem; border-left:3px solid transparent; transition:.15s; }
+.doc-sidebar-nav li a:hover,
+.doc-sidebar-nav li a.active { background:var(--white); color:var(--navy); border-left-color:var(--navy); font-weight:600; }
+.doc-sidebar-count { float:right; color:var(--slate-400); font-weight:400; font-size:.72rem; }
+.doc-sidebar-divider { border:none; border-top:1px solid var(--slate-200); margin:16px 0; }
+
+/* ── Doc main ── */
+.doc-main { padding:32px 40px; }
+.results-label { font-family:var(--font-heading); font-size:.78rem; font-weight:600; color:var(--slate-500); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--slate-200); }
+
+/* ── Doc rows ── */
+.doc-row { display:grid; grid-template-columns:56px 1fr auto; gap:16px; align-items:center; padding:14px 0; border-bottom:1px solid var(--slate-100); transition:.15s; }
+.doc-row:hover { background:var(--slate-50); margin:0 -12px; padding-left:12px; padding-right:12px; border-radius:var(--radius-sm); }
+.doc-row-img { background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-sm); height:56px; width:56px; display:flex; align-items:center; justify-content:center; color:var(--slate-400); font-size:.58rem; }
+.doc-row-body .cat { font-family:var(--font-heading); font-size:.6rem; font-weight:600; color:var(--slate-400); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:2px; }
+.doc-row-body h4 { font-family:var(--font-heading); font-size:.88rem; font-weight:700; color:var(--navy); margin-bottom:2px; }
+.doc-row-body p { font-size:.72rem; color:var(--slate-500); }
+.doc-row-actions { display:flex; flex-direction:column; gap:6px; flex-shrink:0; }
+.doc-dl-btn { display:inline-flex; align-items:center; gap:4px; background:var(--navy); color:var(--white); padding:7px 14px; font-family:var(--font-heading); font-size:.65rem; font-weight:700; text-decoration:none; text-align:center; text-transform:uppercase; letter-spacing:.8px; border-radius:4px; transition:.15s; white-space:nowrap; }
+.doc-dl-btn:hover { background:var(--navy-light); }
+.doc-view-btn { display:inline-flex; align-items:center; background:transparent; border:1px solid var(--slate-200); border-radius:4px; color:var(--slate-600); padding:6px 14px; font-family:var(--font-heading); font-size:.65rem; font-weight:600; text-decoration:none; text-align:center; white-space:nowrap; transition:.15s; }
+.doc-view-btn:hover { border-color:var(--slate-600); color:var(--navy); }
+
+/* ── Section category label ── */
+.doc-cat-label { font-family:var(--font-heading); font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--slate-400); margin-bottom:12px; margin-top:28px; display:flex; align-items:center; gap:8px; }
+.doc-cat-label::before { content:''; width:16px; height:2px; background:var(--slate-300); }
+.doc-cat-label:first-of-type { margin-top:0; }
+
+/* ── WF note ── */
+.wf-note { background:var(--slate-50); border-left:3px solid var(--slate-300); color:var(--slate-500); font-size:.72rem; padding:10px 16px; line-height:1.6; max-width:1200px; margin:0 auto; }
+.wf-note code { background:var(--slate-100); padding:1px 6px; border-radius:3px; font-size:.68rem; }
+
+@media(max-width:1024px) {
+  .doc-layout { grid-template-columns:200px 1fr; }
+}
+@media(max-width:768px) {
+  .doc-layout { grid-template-columns:1fr; }
+  .doc-sidebar { display:none; }
+  .search-bar, .filter-bar { padding-left:16px; padding-right:16px; }
+  .search-inner { flex-direction:column; }
+  .doc-main { padding:24px 16px; }
+  .doc-row { grid-template-columns:1fr; }
+  .doc-row-img { display:none; }
+  .doc-row-actions { flex-direction:row; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HEADER ══════ -->
+<header class="hdr">
+
+  <div class="hdr-main">
+    <a href="index.html" class="logo" style="text-decoration:none;">SCAN<em>MEG</em></a>
+    <ul class="nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="technologie.html">Technologie</a></li>
+      <li><a href="support.html" class="on">Support</a></li>
+      <li><a href="entreprise.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hdr-right">
+      <div class="lang-sw"><button class="on">FR</button><button>EN</button></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════ PAGE HEADER ══════ -->
+<div class="pg-hdr">
+  <div class="pg-hdr-in">
+    <div class="pg-bc"><a href="index.html">Accueil</a> / <a href="support.html">Support</a> / Manuels & documentation</div>
+    <h1>Manuels & documentation</h1>
+    <p>Retrouvez les manuels d'utilisation et fiches techniques pour tous vos produits ScanMeg. Recherchez par nom de produit ou filtrez par catégorie.</p>
+  </div>
+</div>
+
+
+<!-- ══════ BARRE DE RECHERCHE ══════ -->
+<div class="search-bar">
+  <div class="search-inner">
+    <input type="text" class="search-input" placeholder="Rechercher un produit — ex : Type TL, Laser 3D…">
+    <button class="search-btn">Rechercher</button>
+  </div>
+</div>
+
+
+<!-- ══════ FILTRES CATÉGORIE ══════ -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Filtrer :</span>
+    <span class="filter-chip active">Tous (25)</span>
+    <span class="filter-chip">Infrarouge (7)</span>
+    <span class="filter-chip">Laser (5)</span>
+    <span class="filter-chip">Laser 3D (2)</span>
+    <span class="filter-chip">Modules (11)</span>
+  </div>
+</div>
+
+
+<!-- ══════ NOTE TECHNIQUE ══════ -->
+<div class="wf-note">
+  <strong>WooCommerce + ACF</strong> — Cette liste est générée dynamiquement — tous les produits WC ayant un fichier PDF attaché via le champ ACF <code>manuel_pdf</code>. Aucune maintenance manuelle nécessaire : uploader un PDF sur la fiche produit → il apparaît ici automatiquement.
+</div>
+
+
+<!-- ══════ DOCUMENTATION ══════ -->
+<div class="doc-wrap">
+  <div class="doc-layout">
+
+    <aside class="doc-sidebar">
+      <div class="doc-sidebar-heading" style="margin-top:16px;">Catégories</div>
+      <ul class="doc-sidebar-nav">
+        <li><a href="#" class="active">Tous les produits <span class="doc-sidebar-count">25</span></a></li>
+        <li><a href="#">Infrarouge <span class="doc-sidebar-count">7</span></a></li>
+        <li><a href="#">Laser <span class="doc-sidebar-count">5</span></a></li>
+        <li><a href="#">Laser 3D <span class="doc-sidebar-count">2</span></a></li>
+        <li><a href="#">Modules <span class="doc-sidebar-count">11</span></a></li>
+      </ul>
+      <hr class="doc-sidebar-divider">
+      <div style="padding:16px 24px;">
+        <p style="font-size:.72rem;color:var(--slate-500);line-height:1.6;margin-bottom:12px;">Vous ne trouvez pas votre document ?</p>
+        <a href="contact.html" class="btn btn-dark" style="width:100%;justify-content:center;padding:9px 14px;font-size:.68rem;">Contacter le support</a>
+      </div>
+    </aside>
+
+    <main class="doc-main">
+      <p class="results-label">25 documents disponibles</p>
+
+      <!-- Infrarouge -->
+      <div class="doc-cat-label">Infrarouge</div>
+
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type HD/LD</h4><p>Manuel d'utilisation v2.1 · Fiche technique</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type MD</h4><p>Manuel d'utilisation v1.8 · Fiche technique</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type P</h4><p>Manuel d'utilisation v1.4 · Fiche technique</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type PROX</h4><p>Manuel d'utilisation v1.2</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type T</h4><p>Manuel d'utilisation v2.0 · Fiche technique</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type TL</h4><p>Manuel d'utilisation v1.6</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Infrarouge</div><h4>Type XD</h4><p>Manuel d'utilisation v1.1</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+
+      <!-- Laser -->
+      <div class="doc-cat-label">Laser</div>
+
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Laser</div><h4>Modèle laser — [ Nom ]</h4><p>Manuel d'utilisation · Fiche technique</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-img">[ img ]</div>
+        <div class="doc-row-body"><div class="cat">Laser</div><h4>Modèle laser — [ Nom ]</h4><p>Manuel d'utilisation · Fiche technique</p></div>
+        <div class="doc-row-actions"><a href="#" class="doc-dl-btn">📄 Télécharger</a><a href="fiche-produit.html" class="doc-view-btn">Voir le produit</a></div>
+      </div>
+
+      <div style="text-align:center;padding:20px 0;font-size:.78rem;color:var(--slate-400);">
+        … 16 autres produits (Laser 3D + Modules) …
+      </div>
+
+    </main>
+  </div>
+</div>
+
+
+<!-- ══════ CTA ══════ -->
+<div class="cta">
+  <h2>Vous avez besoin d'aide technique ?</h2>
+  <p>Notre équipe répond directement — pas de centre d'appel.</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn btn-dark">Réparation & SAV</a>
+    <a href="contact.html" class="btn btn-outline" style="border-color:var(--slate-400);color:var(--navy);">Nous écrire →</a>
+  </div>
+</div>
+
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="ftr">
+  <div class="ftr-g">
+    <div>
+      <div class="ftr-brand">SCANMEG</div>
+      <p class="ftr-desc">ScanMeg conçoit des systèmes de détection et de mesure robustes et fiables pour les environnements les plus exigeants de la transformation du bois.</p>
+      <p class="ftr-info"><strong>Tél :</strong> 450 419 4555</p>
+      <p class="ftr-info"><strong>Courriel :</strong> ventes@scanmeg.com</p>
+      <a href="#" class="ftr-info">Linkedin</a> / 
+      <a href="#" class="ftr-info">Facebook</a>
+    </div>
+    <div class="ftr-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="produits.html">Produits</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="technologie.html">Technologie</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="entreprise.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Produits</h4>
+      <ul>
+        <li><a href="categorie-infrarouge.html">Infrarouge</a></li>
+        <li><a href="categorie-laser.html">Laser</a></li>
+        <li><a href="categorie-laser3d.html">Laser 3D</a></li>
+        <li><a href="categorie-modules.html">Modules et périphériques</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Siège social</h4>
+      <p class="ftr-info">3517 Boul. De La Grande Allée<br>Boisbriand, QC J7H 1H5<br>Canada</p>
+      <h4 style="margin-top:16px;">Bureaux</h4>
+      <p class="ftr-info">ScanMeg West — Surrey, BC</p>
+      <p class="ftr-info">ScanMeg Europe — France</p>
+      <p class="ftr-info">ScanMeg Japon</p>
+    </div>
+  </div>
+  <div class="ftr-bot">
+    <span>© 2025 ScanMeg Inc. Tous droits réservés.</span>
+    <span>Politique de cookies · Déclaration de confidentialité</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector(".hamburger");
+  var nav = document.querySelector(".nav");
+  if(btn && nav){
+    btn.addEventListener("click", function(){
+      nav.classList.toggle("open");
+    });
+    document.addEventListener("click", function(e){
+      if(!btn.contains(e.target) && !nav.contains(e.target)){
+        nav.classList.remove("open");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScanMeg — Support</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wireframe.css">
+<style>
+.support-cards { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:48px; }
+.support-card-main { background:var(--white);border-radius:var(--radius-md); border:1px solid var(--slate-200);border-radius:var(--radius-md); padding:48px 40px; text-decoration:none; color:var(--slate-600); display:block; }
+.support-card-main:hover { border-color:var(--slate-500); }
+.support-card-icon { font-size:40px; margin-bottom:20px; display:block; }
+.support-card-main h3 { font-size:22px; font-family:var(--font-heading);font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+.support-card-main p { font-size:14px; color:var(--slate-600); line-height:1.7; margin-bottom:20px; }
+.support-card-main .arrow { font-size:12px; font-weight:700; color:var(--slate-600); text-transform:uppercase; letter-spacing:1px; }
+.contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.contact-item { background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius-md); padding:32px 28px; }
+.contact-item h4 { font-size:14px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+.contact-item p { font-size:13px; color:var(--slate-600); line-height:1.7; }
+.contact-item a { color:var(--slate-600); text-decoration:none; font-weight:700; }
+.contact-item .tel { font-size:18px; font-family:var(--font-heading);font-weight:800; color:var(--navy); display:block; margin-bottom:4px; }
+@media(max-width:768px){
+  .support-cards { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HEADER ══════ -->
+<header class="hdr">
+
+  <div class="hdr-main">
+    <a href="index.html" class="logo" style="text-decoration:none;">SCAN<em>MEG</em></a>
+    <ul class="nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="technologie.html">Technologie</a></li>
+      <li><a href="support.html" class="on">Support</a></li>
+      <li><a href="entreprise.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hdr-right">
+      <div class="lang-sw"><button class="on">FR</button><button>EN</button></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="pg-hdr">
+  <div class="pg-hdr-in">
+    <div class="pg-bc"><a href="index.html">Accueil</a> / Support</div>
+    <h1>Support</h1>
+    <p>Vous avez déjà un produit ScanMeg ? Trouvez votre manuel, envoyez un appareil en réparation, ou contactez notre équipe technique.</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="sec-inner">
+
+    <div class="support-cards">
+      <a href="support-manuels.html" class="support-card-main">
+        <span class="support-card-icon">📄</span>
+        <h3>Manuels & documentation</h3>
+        <p>Téléchargez les manuels d'utilisation, guides d'installation et fiches techniques pour tous les produits ScanMeg. Recherche par nom de produit ou catégorie.</p>
+        <span class="arrow">Accéder à la documentation →</span>
+      </a>
+      <a href="contact.html" class="support-card-main">
+        <span class="support-card-icon">🔧</span>
+        <h3>Réparation & SAV</h3>
+        <p>Envoyez votre capteur en réparation. Formulaire de demande RMA, informations d'expédition et suivi de votre réparation.</p>
+        <span class="arrow">Demander une réparation →</span>
+      </a>
+    </div>
+
+    <!-- Contact direct -->
+    <div class="sec-head" style="flex-direction:column;align-items:flex-start;">
+      <p class="sec-label">Contact technique</p>
+      <h2 class="sec-title">Besoin d'aide directe ?</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h4>Réparations</h4>
+        <span class="tel">450 419 4555</span>
+        <p>Option 2 pour le service après-vente.<br>
+        <a href="mailto:service@scanmeg.com">service@scanmeg.com</a><br><br>
+        Lun–ven, 8h–17h EST</p>
+      </div>
+      <div class="contact-item">
+        <h4>Support technique</h4>
+        <span class="tel">450 419 4555</span>
+        <p>Option 3 pour l'assistance technique.<br>
+        <a href="mailto:support@scanmeg.com">support@scanmeg.com</a><br><br>
+        Lun–ven, 8h–17h EST</p>
+      </div>
+      <div class="contact-item">
+        <h4>Bureaux internationaux</h4>
+        <p>
+          <strong style="color:var(--navy);">Canada Ouest</strong> — Surrey BC<br>
+          <strong style="color:var(--navy);">Europe</strong> — France<br>
+          <strong style="color:var(--navy);">Japon</strong> — Shimada (via Hirotacorp)<br><br>
+          <a href="contact.html">Voir tous les bureaux →</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta">
+  <h2>Vous êtes prospect ?</h2>
+  <p>La section Support s'adresse aux clients existants. Pour un nouveau projet :</p>
+  <a href="produits.html" class="btn btn-dark">Voir les produits</a><a href="contact.html" class="btn btn-dark">Parlons-en →</a>
+</div>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="ftr">
+  <div class="ftr-g">
+    <div>
+      <div class="ftr-brand">SCANMEG</div>
+      <p class="ftr-desc">ScanMeg conçoit des systèmes de détection et de mesure robustes et fiables pour les environnements les plus exigeants de la transformation du bois.</p>
+      <p class="ftr-info"><strong>Tél :</strong> 450 419 4555</p>
+      <p class="ftr-info"><strong>Courriel :</strong> ventes@scanmeg.com</p>
+      <a href="#" class="ftr-info">Linkedin</a> / 
+      <a href="#" class="ftr-info">Facebook</a>
+    </div>
+    <div class="ftr-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="produits.html">Produits</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="technologie.html">Technologie</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="entreprise.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Produits</h4>
+      <ul>
+        <li><a href="categorie-infrarouge.html">Infrarouge</a></li>
+        <li><a href="categorie-laser.html">Laser</a></li>
+        <li><a href="categorie-laser3d.html">Laser 3D</a></li>
+        <li><a href="categorie-modules.html">Modules et périphériques</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Siège social</h4>
+      <p class="ftr-info">3517 Boul. De La Grande Allée<br>Boisbriand, QC J7H 1H5<br>Canada</p>
+      <h4 style="margin-top:16px;">Bureaux</h4>
+      <p class="ftr-info">ScanMeg West — Surrey, BC</p>
+      <p class="ftr-info">ScanMeg Europe — France</p>
+      <p class="ftr-info">ScanMeg Japon</p>
+    </div>
+  </div>
+  <div class="ftr-bot">
+    <span>© 2025 ScanMeg Inc. Tous droits réservés.</span>
+    <span>Politique de cookies · Déclaration de confidentialité</span>
+  </div>
+</footer>
+<script>
+(function(){
+  var btn = document.querySelector(".hamburger");
+  var nav = document.querySelector(".nav");
+  if(btn && nav){
+    btn.addEventListener("click", function(){
+      nav.classList.toggle("open");
+    });
+    document.addEventListener("click", function(e){
+      if(!btn.contains(e.target) && !nav.contains(e.target)){
+        nav.classList.remove("open");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

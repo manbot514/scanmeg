@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScanMeg — Accueil</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wireframe.css">
+<style>
+:root {
+  /* Light theme — mapped from 07 tokens */
+  --c-bg:       #ffffff;
+  --c-surface:  #f5f5f5;
+  --c-card:     #ffffff;
+  --c-border:   #ddd;
+  --c-muted:    #888;
+  --c-label:    #888;
+  --c-text:     #4a4a4a;
+  --c-heading:  #1a1a1a;
+  --c-white:    #1a1a1a;
+.temoignages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.temoignage { background:var(--c-card);border:1px solid var(--c-border);border-left:4px solid #999;border-radius:0 var(--radius-md) var(--radius-md) 0; padding:32px 28px; }
+.temoignage blockquote { font-size:13px; color:var(--c-text); line-height:1.8; font-style:italic; margin-bottom:16px; }
+.temoignage cite { font-size:11px; color:var(--c-label); text-transform:uppercase; letter-spacing:1px; display:block; }
+.temoignage cite strong { color:var(--c-heading); display:block; margin-bottom:2px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ══════ HEADER ══════ -->
+<header class="hdr">
+
+  <div class="hdr-main">
+    <a href="index.html" class="logo" style="text-decoration:none;">SCAN<em>MEG</em></a>
+    <ul class="nav">
+      <li><a href="index.html" class="on">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="technologie.html">Technologie</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="entreprise.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hdr-right">
+      <div class="lang-sw"><button class="on">FR</button><button>EN</button></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label">Depuis 2001</div>
+      <h1>Développeur de <em>solutions industrielles</em></h1>
+      <p class="hero-text">ScanMeg vous propose une gamme de systèmes de détection de présence et de mesure qui accélère et optimise la production en usine. Reconnus mondialement, les capteurs et les mesureurs augmentent la capacité de production, éliminent les pertes, définissent les objets et aident à produire en temps réel.</p>
+      <div class="hero-btns">
+        <a href="produits.html" class="btn btn-dark">Voir les produits →</a>
+        <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.2);color:var(--white);">Demander une soumission</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ph">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        Slider Hero — Environnement industriel
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ KPI ══════ -->
+<div class="kpi">
+  <div class="kpi-row">
+    <div><div class="kpi-n">2001</div><div class="kpi-l">Fondé au Québec</div></div>
+    <div><div class="kpi-n">10 906 874 196</div><div class="kpi-l">Pièces mesurées</div></div>
+    <div><div class="kpi-n">54 095</div><div class="kpi-l">Produits vendus</div></div>
+    <div><div class="kpi-n">50+</div><div class="kpi-l">Pays distribués</div></div>
+  </div>
+</div>
+
+
+<!-- ══════ CATÉGORIES PRODUITS ══════ -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div>
+        <div class="sec-label">Nos produits</div>
+        <h2 class="sec-title">La précision, la fiabilité, la simplicité <em>et la confiance.</em></h2>
+        <p class="sec-desc">Les innovations de ScanMeg sont si développées et précises qu'elles résolvent les défis de production les plus complexes. Avant tout achat, nos spécialistes s'assurent de la parfaite adéquation entre le produit, l'application et la technologie existante à votre usine.</p>
+      </div>
+      <a href="produits.html" class="btn btn-dark" style="height:fit-content;">Tous les produits →</a>
+    </div>
+    <div class="cat-g">
+      <div class="cat-c">
+        <div class="cat-c-img">[ Image infrarouge ]</div>
+        <div class="cat-c-body">
+          <h3>Technologie infrarouge</h3>
+          <p>Un émetteur et un receveur détectant la présence, la dimension, l'épaisseur, la largeur et la longueur de n'importe quel objet. Cette gamme de capteurs infrarouges est disponible à prix compétitif avec des applications variées.</p>
+          <a href="categorie.html" class="cat-c-link">voir le produit →</a>
+        </div>
+      </div>
+      <div class="cat-c">
+        <div class="cat-c-img">[ Image laser ]</div>
+        <div class="cat-c-body">
+          <h3>Technologie laser</h3>
+          <p>La technologie au laser est beaucoup plus précise que celle à l'infrarouge. La gamme de produits lasers utilise une technologie en constante évolution.</p>
+          <a href="categorie.html" class="cat-c-link">voir le produit →</a>
+        </div>
+      </div>
+      <div class="cat-c">
+        <div class="cat-c-img">[ Image laser 3D ]</div>
+        <div class="cat-c-body">
+          <h3>Technologie laser 3D</h3>
+          <p>La technologie au Laser 3D est la plus performante des capteurs au laser. Elle est également la plus pratique pour obtenir le profil et la forme des objets en trois dimensions.</p>
+          <a href="categorie.html" class="cat-c-link">voir le produit →</a>
+        </div>
+      </div>
+      <div class="cat-c">
+        <div class="cat-c-img">[ Image modules ]</div>
+        <div class="cat-c-body">
+          <h3>Modules et périphériques</h3>
+          <p>ScanMeg met une gamme de produits périphériques à votre disposition, afin de permettre à vos équipements de faire des actions différentes et d'ajouter des fonctionnalités additionnelles.</p>
+          <a href="categorie.html" class="cat-c-link">voir le produit →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. AUGMENTERA VOTRE RENDEMENT -->
+<section class="sec sec--gray" >
+  <div class="sec-inner">
+    <div style="display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;">
+      <div>
+        <p class="sec-label">ScanMeg</p>
+        <h2 class="sec-title">Augmentera votre rendement</h2>
+        <p style="font-size:.9rem;color:var(--c-text);line-height:1.7;margin-top:16px;">Les systèmes ScanMeg sont conçus pour résister aux conditions les plus difficiles et demeurer performants. Pouvant être intégrés à tous les processus de production, nos produits offrent à la fois une facilité d'utilisation et une précision sans pareil. Actuellement, les capteurs et les mesureurs ScanMeg sont un incontournable pour les industries les plus exigeantes comme l'industrie forestière, minière, l'alimentation, l'emballage, l'automobile, les scieries et l'aciérie. Pour plusieurs, ScanMeg est le partenaire proposant la meilleure solution en optimisation industrielle.</p>
+        <a href="contact.html" class="btn btn-dark btn-sm" style="margin-top:24px;display:inline-block;">Consultez-nous →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : convoyeur en scierie avec capteurs ScanMeg installés</span></div>
+        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : tapis transporteur en milieu minier</span></div>
+        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : chaîne de montage automobile avec système de mesure</span></div>
+        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : tapis transporteur en milieu minier</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ ENGAGEMENT ══════ -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Notre engagement</div>
+    <h2 class="sec-title">Nous sommes intransigeants en ce qui concerne <em>le détail et la précision.</em></h2>
+    <div style="margin-bottom:40px;"></div>
+    <div class="adv-g">
+      <div class="svc-c">
+        <div class="adv-n">01</div>
+        <div>
+          <h4>Aucune perte</h4>
+          <p>Augmentez votre productivité, ainsi que l'exactitude et la fiabilité de votre machinerie grâce à nos systèmes hautement performants.</p>
+        </div>
+      </div>
+      <div class="svc-c">
+        <div class="adv-n">02</div>
+        <div>
+          <h4>Précisions</h4>
+          <p>Nos appareils projettent entre 6, 8, 10 ou 12 lignes laser sur un objet, afin que les caméras saisissent les coordonnées exactes de l'intersection des lignes de laser sur l'objet.</p>
+        </div>
+      </div>
+      <div class="svc-c">
+        <div class="adv-n">03</div>
+        <div>
+          <h4>Productivité</h4>
+          <p>>Augmentez votre rendement de votre productivité et de vos performances.</p>
+        </div>
+      </div>
+      <div class="svc-c">
+        <div class="adv-n">04</div>
+        <div>
+          <h4>Rapidité</h4>
+          <p>Une vitesse de captation pouvant aller jusqu'à 4 000 acquisitions par seconde.</p>
+        </div>
+      </div>
+      <div class="svc-c">
+        <div class="adv-n">05</div>
+        <div>
+          <h4>Dimension</h4>
+          <p>Nos appareils détectent la taille des très petits objets, aussi minuscules que 0,001 pouce (0,025 mm).</p>
+        </div>
+      </div>
+      <div class="svc-c">
+        <div class="adv-n">06</div>
+        <div>
+          <h4>Distance</h4>
+          <p>Nos systèmes détectent la taille à plus de 100 pieds (30 m) et la forme à plus de 12 pieds (3,6 m).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ DURABILITÉ ══════ -->
+<section class="sec sec--gray">
+  <div class="sec-inner">
+    <div class="sec-label">Durabilité</div>
+    <h2 class="sec-title">La durabilité <em>de nos appareils</em></h2>
+    <p class="sec-desc">Plusieurs installations fonctionnent depuis 15 ans en gage de fiabilité.</p>
+    <div class="dur-g">
+      <div class="dur-c">
+        <div class="dur-h">
+          <div class="ico">❄️</div>
+          <h4>Froid</h4>
+          <small>Résistantes de –40 à +50 degrés Celsius</small>
+        </div>
+        <div class="dur-b">
+          <p>Conçu pour les environnements extrêmement froids</p>
+          <p>Aucun système de chauffage requis</p>
+          <p>Performance constante en conditions de gel</p>
+        </div>
+      </div>
+      <div class="dur-c">
+        <div class="dur-h">
+          <div class="ico">🌫️</div>
+          <h4>Débris</h4>
+          <small>Toujours fonctionnelles en présence de ceux-ci</small>
+        </div>
+        <div class="dur-b">
+          <p>Résistant à la poussière et à la résine</p>
+          <p>Chemins optiques autonettoyants</p>
+          <p>Boîtiers scellés résistants</p>
+        </div>
+      </div>
+      <div class="dur-c">
+        <div class="dur-h">
+          <div class="ico">〰️</div>
+          <h4>Vibration</h4>
+          <small>Tolérance en continu</small>
+        </div>
+        <div class="dur-b">
+          <p>Absorption des chocs de calibre industriel</p>
+          <p>Lectures stables sous machinerie lourde</p>
+          <p>Tolérance au désalignement</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════ SERVICES ══════ -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Nos services</div>
+    <h2 class="sec-title">Un support personnalisé <em>de l'achat à l'optimisation</em></h2>
+    <div style="margin-bottom:32px;"></div>
+    <div class="svc-g">
+      <div class="svc-c">
+        <div class="svc-ico">💡</div>
+        <h3>Conseils professionnels</h3>
+        <p>Nos spécialistes prendront le temps d'analyser vos défis de production pour simplifier les processus et augmenter leur rendement par une performance optimisée.</p>
+      </div>
+      <div class="svc-c">
+        <div class="svc-ico">⚙️</div>
+        <h3>Ingénierie sur mesure</h3>
+        <p>Confiez vos défis de production, de contrôle de présence et de mesures à nos spécialistes. Ils sauront concevoir le système s'adaptant aux particularités de votre chaîne de production.</p>
+      </div>
+      <div class="svc-c">
+        <div class="svc-ico">🔧</div>
+        <h3>Réparation rapide</h3>
+        <p>Augmentez la durée de vie de vos équipements grâce à notre expertise. Nos techniciens réparent les systèmes avec une rapidité supérieure au marché, afin que vous puissiez reprendre votre production sans délai.</p>
+      </div>
+      <div class="svc-c">
+        <div class="svc-ico">📦</div>
+        <h3>Vente de produits</h3>
+        <p>ScanMeg vous offre une diversité de produits pour la mesure, la détection, l'acquisition de profil d'objet et la forme 3D par triangulation. Cette gamme complète de capteurs peut résoudre n'importe quel défi de production.</p>
+      </div>
+      <div class="svc-c">
+        <div class="svc-ico">📈</div>
+        <h3>Optimisation après-vente</h3>
+        <p>Nos experts s'assurent que vous exploitez à pleine capacité les produits ScanMeg. En plus de vous supporter lors de l'intégration, ils vous conseillent sur l'utilisation maximale des produits, les paramètres à utiliser et autres éléments susceptibles de bonifier cet investissement.</p>
+      </div>
+      <div class="svc-c">
+        <div class="svc-ico">🤝</div>
+        <h3>Suivi après-vente</h3>
+        <p>ScanMeg vous guide vers la solution répondant à votre défi de production, et ce, quelle que soit sa complexité. Ce support complet vous assure un service digne des plus hauts standards présents sur le marché international.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ Fabrication au quebec ══════ -->
+<section class="sec sec--dark">
+  <div class="sec-inner">
+    <h2 class="sec-title">Fabriqué <em>au Québec</em></h2>
+    <p class="sec-desc">Distribués mondialement</p>
+  </div>
+</section>
+
+
+<!-- 8. TÉMOIGNAGES -->
+<section class="sec sec--gray">
+  <div class="sec-inner">
+    <div class="sec-header"><p class="sec-label">Ce que les clients disent</p><h2 class="sec-title">Sur ScanMeg</h2></div>
+    <div class="temoignages-grid">
+      <div class="temoignage">
+        <blockquote>« Les produits Scanmeg nous ont permis des augmentations de productivité entre 5 et 10% au fil des années. Ces produits nous ont permis d'atteindre des améliorations de productivité considérables. »</blockquote>
+        <cite><strong>Claude</strong>Résolu. Produits forestiers</cite>
+      </div>
+      <div class="temoignage">
+        <blockquote>« Dans l'application de la refendeuse USNR, nous avons utilisé les détecteurs de marque ScanMeg qui ont très bien répondu à nos attentes. Le service technique de ScanMeg a été d'un grand support pour nos programmeurs. »</blockquote>
+        <cite><strong>Jacques</strong>USNR</cite>
+      </div>
+      <div class="temoignage">
+        <blockquote>« Très facile à utiliser ! On a câblé et le tour était joué. Je n'ai pas eu à passer les 45 minutes habituellement requises pour l'alignement. Un autre grand produit de Scanmeg ! »</blockquote>
+        <cite><strong>Tom</strong>Britton Lumber Fairlee</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ TÉMOIGNAGES ══════
+<section class="sec sec--dark">
+  <div class="sec-inner">
+    <div class="sec-label">Témoignages</div>
+    <h2 class="sec-title">Ce que les clients disent <em>sur ScanMeg</em></h2>
+    <div style="margin-bottom:32px;"></div>
+    <div class="svc-c">
+      <q>Les produits Scanmeg nous ont permis des augmentations de productivité entre 5 et 10% au fil des années. Certes il existe d'autres marques de produits de détection mais ces derniers sont avec des plages fixes et ne correspondent pas toujours aux besoins de l'industrie du sciage. Les produits Scanmeg ont été développés en tenant compte des contraintes de poussières, de vibrations et fonctionnent même lorsqu'ils sont installés dans un environnement sévère.</q>
+      <div class="testi-auth">— Claude, Résolu. Produits forestiers</div>
+    </div>
+    <div style="height:32px;"></div>
+    <div class="svc-c">
+      <q>Dans l'application de la refendeuse USNR, nous avons inclus deux systèmes de mesurage des blocs. Pour ce faire, nous avons utilisé les détecteurs de marque ScanMeg qui ont très bien répondu à nos attentes pour cette application. De plus, le service technique des gens de ScanMeg à été d'un grand support pour nos programmeurs</q>
+      <div class="testi-auth">— Jacques, USNR</div>
+    </div>
+    <div style="height:32px;"></div>
+    <div class="svc-c">
+      <q>Très facile à utiliser! On a eu seulement à modifier les supports / garde où étaient installés les capteurs Banners, on a installé les P150 face à face, on les a câblés et le tour était joué. Je n'ai pas eu à passer les 45 minutes habituellement requises avec les Banners afin de les aligner, les incliner ou de vérifier les angles de vision. Un autre grand produit de Scanmeg !</q>
+      <div class="testi-auth">— Tom, Britton Lumber Fairlee</div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ══════ CTA ══════ -->
+<div class="cta">
+  <h2>Prêt à optimiser votre production?</h2>
+  <p>Décrivez votre défi — un spécialiste vous répond sous 48h.</p>
+  <a href="produits.html" class="btn btn-dark">Voir les produits→</a>
+    <a href="contact.html" class="btn btn-dark">Parlons-en →</a>
+</div>
+
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="ftr">
+  <div class="ftr-g">
+    <div>
+      <div class="ftr-brand">SCANMEG</div>
+      <p class="ftr-desc">ScanMeg conçoit des systèmes de détection et de mesure robustes et fiables pour les environnements les plus exigeants de la transformation du bois.</p>
+      <p class="ftr-info"><strong>Tél :</strong> 450 419 4555</p>
+      <p class="ftr-info"><strong>Courriel :</strong> ventes@scanmeg.com</p>
+      <a href="#" class="ftr-info">Linkedin</a> / 
+      <a href="#" class="ftr-info">Facebook</a>
+    </div>
+    <div class="ftr-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="produits.html">Produits</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="technologie.html">Technologie</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="entreprise.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Produits</h4>
+      <ul>
+        <li><a href="categorie-infrarouge.html">Infrarouge</a></li>
+        <li><a href="categorie-laser.html">Laser</a></li>
+        <li><a href="categorie-laser3d.html">Laser 3D</a></li>
+        <li><a href="categorie-modules.html">Modules et périphériques</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Siège social</h4>
+      <p class="ftr-info">3517 Boul. De La Grande Allée<br>Boisbriand, QC J7H 1H5<br>Canada</p>
+      <h4 style="margin-top:16px;">Bureaux</h4>
+      <p class="ftr-info">ScanMeg West — Surrey, BC</p>
+      <p class="ftr-info">ScanMeg Europe — France</p>
+      <p class="ftr-info">ScanMeg Japon</p>
+    </div>
+  </div>
+  <div class="ftr-bot">
+    <span>© 2025 ScanMeg Inc. Tous droits réservés.</span>
+    <span>Politique de cookies · Déclaration de confidentialité</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector(".hamburger");
+  var nav = document.querySelector(".nav");
+  if(btn && nav){
+    btn.addEventListener("click", function(){
+      nav.classList.toggle("open");
+    });
+    document.addEventListener("click", function(e){
+      if(!btn.contains(e.target) && !nav.contains(e.target)){
+        nav.classList.remove("open");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
