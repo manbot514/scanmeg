@@ -45,7 +45,7 @@ img { max-width:100%; display:block; }
 .hdr-top a { color:#aaa; text-decoration:none; }
 .hdr-main { padding:0 40px; display:flex; justify-content:space-between; align-items:center; height:68px; position:relative; }
 .logo { font-family:var(--font-heading); font-weight:800; font-size:1.6rem; color:var(--navy); letter-spacing:1.5px; }
-.logo em { font-style:normal; color:var(--slate-600); }
+.logo em { font-style:normal; color:var(--navy); }
 .nav { display:flex; gap:24px; list-style:none; }
 .nav a { font-family:var(--font-heading); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--slate-600); text-decoration:none; padding:4px 0; position:relative; transition:.2s; }
 .nav a:hover { color:var(--navy); }
@@ -74,7 +74,7 @@ img { max-width:100%; display:block; }
 .hero-label { font-family:var(--font-heading); font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#aaa; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
 .hero-label::before { content:''; width:32px; height:2px; background:#aaa; }
 .hero h1 { font-family:var(--font-heading); font-size:2.7rem; font-weight:800; line-height:1.12; color:var(--white); margin-bottom:20px; }
-.hero h1 em { font-style:normal; color:#ccc; }
+.hero h1 em { font-style:normal; color:var(--white); }
 .hero-text { font-size:.92rem; line-height:1.75; color:var(--slate-400); margin-bottom:28px; max-width:520px; }
 .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
 .hero-visual { display:flex; align-items:center; justify-content:center; position:relative; }
@@ -100,8 +100,8 @@ img { max-width:100%; display:block; }
 .sec-label::before { content:''; width:24px; height:2px; background:currentColor; }
 .sec-title { font-family:var(--font-heading); font-size:2rem; font-weight:800; line-height:1.15; color:var(--navy); margin-bottom:14px; }
 .sec--dark .sec-title { color:var(--white); }
-.sec-title em { font-style:normal; color:var(--slate-500); }
-.sec--dark .sec-title em { color:#ccc; }
+.sec-title em { font-style:normal; color:var(--navy); }
+.sec--dark .sec-title em { color:var(--white); }
 .sec-desc { font-size:.9rem; line-height:1.7; color:var(--slate-600); max-width:620px; margin-bottom:36px; }
 .sec--dark .sec-desc { color:var(--slate-400); }
 .sec-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:20px; }
