@@ -146,9 +146,12 @@ img { max-width:100%; display:block; }
 .testi-auth { font-family:var(--font-heading); font-size:.78rem; font-weight:700; color:#888; }
 
 /* ══════ CTA BAND ══════ */
-.cta { background:#ddd; padding:44px 40px; text-align:center; }
+.cta { background:#ddd; padding:64px 40px; text-align:center; }
 .cta h2 { font-family:var(--font-heading); font-size:1.6rem; font-weight:800; color:var(--navy); margin-bottom:10px; }
-.cta p { color:var(--slate-600); margin-bottom:20px; font-size:.88rem; }
+.cta p { color:var(--slate-600); margin-bottom:32px; font-size:.88rem; }
+.cta-btns { display:flex; flex-direction:row; gap:20px; justify-content:center; flex-wrap:wrap; }
+.cta-btns .btn { justify-content:center; }
+.cta-btns .btn { min-width:200px; justify-content:center; }
 
 /* ══════ FOOTER ══════ */
 .ftr { background:var(--navy); padding:56px 40px 20px; }

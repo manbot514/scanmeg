@@ -7,31 +7,115 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="wireframe.css">
 <style>
-:root {
-  /* Light theme — mapped from 07 tokens */
-  --c-bg:       #ffffff;
-  --c-surface:  #f5f5f5;
-  --c-card:     #ffffff;
-  --c-border:   #ddd;
-  --c-muted:    #888;
-  --c-label:    #888;
-  --c-text:     #4a4a4a;
-  --c-heading:  #1a1a1a;
-  --c-white:    #1a1a1a;
+/* ── Hero carrousel pleine largeur ── */
+.hero-carousel {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 60%, #333 100%);
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-carousel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,.04), transparent 65%);
+  pointer-events: none;
+}
+.hero-slide-bg-label {
+  position: absolute;
+  bottom: 80px;
+  right: 40px;
+  font-size: .65rem;
+  color: rgba(255,255,255,.2);
+  font-style: italic;
+  max-width: 220px;
+  text-align: right;
+  line-height: 1.5;
+  z-index: 1;
+}
+.hero-carousel-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+  width: 100%;
+}
+.hero-carousel .hero-label {
+  font-family: var(--font-heading);
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #aaa;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-carousel .hero-label::before { content:''; width:32px; height:2px; background:#aaa; }
+.hero-carousel h1 {
+  font-family: var(--font-heading);
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 1.12;
+  color: #fff;
+  margin-bottom: 20px;
+  max-width: 640px;
+}
+.hero-carousel h1 em { font-style: normal; }
+.hero-carousel .hero-text {
+  font-size: .92rem;
+  line-height: 1.75;
+  color: #aaa;
+  margin-bottom: 36px;
+  max-width: 520px;
+}
+.hero-carousel .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+.hero-carousel .hero-btns .btn { min-width:200px; justify-content:center; }
+
+/* Points carrousel */
+.carousel-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+.carousel-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.3); cursor:pointer; transition:.2s; }
+.carousel-dot.on { background:rgba(255,255,255,.85); width:24px; border-radius:4px; }
+
+/* Témoignages */
 .temoignages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.temoignage { background:var(--c-card);border:1px solid var(--c-border);border-left:4px solid #999;border-radius:0 var(--radius-md) var(--radius-md) 0; padding:32px 28px; }
-.temoignage blockquote { font-size:13px; color:var(--c-text); line-height:1.8; font-style:italic; margin-bottom:16px; }
-.temoignage cite { font-size:11px; color:var(--c-label); text-transform:uppercase; letter-spacing:1px; display:block; }
-.temoignage cite strong { color:var(--c-heading); display:block; margin-bottom:2px; }
+.temoignage { background:#fff; border:1px solid #ddd; border-left:4px solid #999; border-radius:0 10px 10px 0; padding:32px 28px; }
+.temoignage blockquote { font-size:13px; color:#666; line-height:1.8; font-style:italic; margin-bottom:16px; }
+.temoignage cite { font-size:11px; color:#888; text-transform:uppercase; letter-spacing:1px; display:block; }
+.temoignage cite strong { color:#1a1a1a; display:block; margin-bottom:2px; }
+/* CTA corrigé */
+.cta { background:#ddd; padding:64px 40px; text-align:center; }
+.cta h2 { font-family:var(--font-heading); font-size:1.6rem; font-weight:800; color:var(--navy); margin-bottom:12px; }
+.cta p { color:var(--slate-600); margin-bottom:32px; font-size:.88rem; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.cta-btns .btn { min-width:200px; justify-content:center; }
+
+@media(max-width:640px){
+  .hero-carousel-inner { padding:40px 16px 80px; }
+  .hero-carousel h1 { font-size:1.7rem; }
+  .hero-carousel .hero-btns { flex-direction:column; }
+  .hero-slide-bg-label { display:none; }
+  .temoignages-grid { grid-template-columns:1fr; }
+  .cta-btns { flex-direction:column; align-items:center; }
 }
 </style>
-
 </head>
 <body>
 
 <!-- ══════ HEADER ══════ -->
 <header class="hdr">
-
   <div class="hdr-main">
     <a href="index.html" class="logo" style="text-decoration:none;">SCAN<em>MEG</em></a>
     <ul class="nav">
@@ -52,30 +136,30 @@
 </header>
 
 
-<!-- ══════ HERO ══════ -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-label">Depuis 2001</div>
-      <h1>Solide sur toute <em>la ligne</em></h1>
-      <p class="hero-text">SCANMEG conçoit des systèmes de détection et de mesure pour les environnements industriels exigeants. Nos solutions fonctionnent là où les autres échouent.<br><br>
-      Robustes par conception.<br>
-      Durables par nature.<br>
-      Pensés pour le terrain.<br>
-      Soutenus par des experts.</p>
-      <div class="hero-btns">
-        <a href="produits.html" class="btn btn-dark">Voir les produits →</a>
-        <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.2);color:var(--white);">Demander une soumission</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="ph">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-        Slider Hero — Environnement industriel
-      </div>
+<!-- ══════ HERO — CARROUSEL PLEINE LARGEUR ══════ -->
+<div class="hero-carousel">
+  <span class="hero-slide-bg-label">Image pleine largeur — Environnement industriel<br>(slide 1 / 3)</span>
+
+  <div class="hero-carousel-inner">
+    <div class="hero-label">Depuis 2001</div>
+    <h1>Solide sur toute <em>la ligne</em></h1>
+    <p class="hero-text">SCANMEG conçoit des systèmes de détection et de mesure pour les environnements industriels exigeants. Nos solutions fonctionnent là où les autres échouent.<br><br>
+    Robustes par conception.<br>
+    Durables par nature.<br>
+    Pensés pour le terrain.<br>
+    Soutenus par des experts.</p>
+    <div class="hero-btns">
+      <a href="produits.html" class="btn btn-dark">Voir les produits →</a>
+      <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.25);color:#fff;">Demander une soumission</a>
     </div>
   </div>
-</section>
+
+  <div class="carousel-dots">
+    <div class="carousel-dot on"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+  </div>
+</div>
 
 
 <!-- ══════ KPI ══════ -->
@@ -92,14 +176,13 @@
 <!-- ══════ CATÉGORIES PRODUITS ══════ -->
 <section class="sec">
   <div class="sec-inner">
-    <div class="sec-head">
-      <div>
-        <div class="sec-label">Nos produits</div>
-        <h2 class="sec-title">La précision sans compromis</h2>
-        <p class="sec-desc">Nos systèmes sont bâtis pour maintenir une exactitude absolue, même dans le chaos industriel. Avant chaque installation, nos experts valident l'adéquation parfaite entre notre technologie et la réalité technique de votre plancher.</p>
-      </div>
-      <a href="produits.html" class="btn btn-dark" style="height:fit-content;">Tous les produits →</a>
+    <div class="sec-head" style="align-items:flex-start;flex-direction:column;gap:16px;">
+      <div class="sec-label">Nos produits</div>
+      <h2 class="sec-title">La précision sans compromis</h2>
+      <p class="sec-desc" style="margin-bottom:0;">Nos systèmes sont bâtis pour maintenir une exactitude absolue, même dans le chaos industriel. Avant chaque installation, nos experts valident l'adéquation parfaite entre notre technologie et la réalité technique de votre plancher.</p>
+      <a href="produits.html" class="btn btn-dark">Tous les produits →</a>
     </div>
+    <div style="margin-bottom:32px;"></div>
     <div class="cat-g">
       <div class="cat-c">
         <div class="cat-c-img">[ Image infrarouge ]</div>
@@ -137,21 +220,21 @@
   </div>
 </section>
 
-<!-- 3. NOTRE PROMESSE -->
-<section class="sec sec--gray" >
+
+<!-- ══════ NOTRE PROMESSE ══════ -->
+<section class="sec sec--gray">
   <div class="sec-inner">
-    <div style="display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;">
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:64px;align-items:center;">
       <div>
         <p class="sec-label">Notre engagement</p>
         <h2 class="sec-title">La rentabilité par la fiabilité</h2>
-        <p style="font-size:.9rem;color:var(--c-text);line-height:1.7;margin-top:16px;">Nous nous engageons à sécuriser votre investissement en livrant des équipements conçus pour durer des décennies dans les environnements les plus exigeants. Vous profitez d'un accès direct à notre expertise pour maximiser votre productivité.</p>
-        <a href="contact.html" class="btn btn-dark btn-sm" style="margin-top:24px;display:inline-block;">Consultez-nous →</a>
+        <p style="font-size:.9rem;color:var(--slate-600);line-height:1.7;margin-top:16px;">Nous nous engageons à sécuriser votre investissement en livrant des équipements conçus pour durer des décennies dans les environnements les plus exigeants. Vous profitez d'un accès direct à notre expertise pour maximiser votre productivité.</p>
+        <a href="contact.html" class="btn btn-dark btn-sm" style="margin-top:28px;display:inline-block;">Consultez-nous →</a>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : convoyeur en scierie avec capteurs SCANMEG installés</span></div>
-        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : tapis transporteur en milieu minier</span></div>
-        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : chaîne de montage automobile avec système de mesure</span></div>
-        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:120px;display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:.72rem;"><span style="font-size:.72rem;color:var(--c-muted);font-style:italic;">Photo : tapis transporteur en milieu minier</span></div>
+      <!-- 2 photos -->
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:150px;display:flex;align-items:center;justify-content:center;padding:0 16px;"><span style="font-size:.72rem;color:var(--slate-400);font-style:italic;text-align:center;">Photo : convoyeur en scierie avec capteurs SCANMEG installés</span></div>
+        <div style="background:linear-gradient(135deg,var(--slate-50),var(--slate-100));border:1px solid var(--slate-200);border-radius:var(--radius-md);height:150px;display:flex;align-items:center;justify-content:center;padding:0 16px;"><span style="font-size:.72rem;color:var(--slate-400);font-style:italic;text-align:center;">Photo : tapis transporteur en milieu minier</span></div>
       </div>
     </div>
   </div>
@@ -170,95 +253,51 @@
         <div class="pilier-sep"></div>
         <p><strong>Conçus pour les environnements extrêmes.</strong></p>
         <p style="margin:6px 0 12px;">25 ans à comprendre les réalités du plancher.</p>
-        <p>Nos systèmes naissent sur le terrain. Une rigueur forgée dans l’industrie du bois, prête pour tous les défis industriels.</p>
+        <p>Nos systèmes naissent sur le terrain. Une rigueur forgée dans l'industrie du bois, prête pour tous les défis industriels.</p>
       </div>
       <div class="pilier-c">
         <div class="pilier-titre">Matériaux durables</div>
         <div class="pilier-sep"></div>
         <p><strong>Une ingénierie sans compromis.</strong></p>
         <p style="margin:6px 0 12px;">Boîtiers en aluminium massif et électronique de grade industriel.</p>
-        <p>Chaque matériau est choisi pour résister à l'usure du temps et aux conditions industrielles les plus difficiles. Nos capteurs ne sont pas des visiteurs dans votre usine. Ils en font partie. Pour longtemps.</p>
+        <p>Chaque matériau est choisi pour résister à l'usure du temps et aux conditions industrielles les plus difficiles.</p>
       </div>
       <div class="pilier-c">
         <div class="pilier-titre">Robustesse industrielle</div>
         <div class="pilier-sep"></div>
         <p><strong>L'intégrité du signal.</strong></p>
         <p style="margin:6px 0 12px;">Durabilité démontrée et réduction des faux signaux.</p>
-        <p>Nos systèmes bravent la poussière, les températures et les impacts pour livrer une donnée, sans interférence. Vous obtenez des opérations fluides et sécuritaires, même au cœur du chaos. </p>
+        <p>Nos systèmes bravent la poussière, les températures et les impacts pour livrer une donnée sans interférence.</p>
       </div>
       <div class="pilier-c">
         <div class="pilier-titre">Accompagnement terrain</div>
         <div class="pilier-sep"></div>
         <p><strong>Le terrain parle au terrain.</strong></p>
-        <p style="margin:6px 0 12px;">Une ligne directe avec nos concepteurs et techniciens, limitant les arrêts non planifiés.</p>
-        <p>Vous parlez à des experts qui comprennent votre réalité opérationnelle, pas à un centre d'appels. Nous résolvons les problèmes rapidement pour éliminer l'incertitude et maximiser votre productivité.</p>
-      </div>
-    </div>
-  </div>
-</section>
-    <div style="margin-bottom:40px;"></div>
-<!-- ══════ DURABILITÉ ══════ -->
-<section class="sec sec--gray">
-  <div class="sec-inner">
-    <div class="sec-label">Durabilité</div>
-    <h2 class="sec-title">La durabilité <em>de nos appareils</em></h2>
-    <p class="sec-desc">Plusieurs installations fonctionnent depuis 15 ans en gage de fiabilité.</p>
-    <div class="dur-g">
-      <div class="dur-c">
-        <div class="dur-h">
-          <div class="ico">❄️</div>
-          <h4>Froid</h4>
-          <small>Résistantes de –40 à +50 degrés Celsius</small>
-        </div>
-        <div class="dur-b">
-          <p>Conçu pour les environnements extrêmement froids</p>
-          <p>Aucun système de chauffage requis</p>
-          <p>Performance constante en conditions de gel</p>
-        </div>
-      </div>
-      <div class="dur-c">
-        <div class="dur-h">
-          <div class="ico">🌫️</div>
-          <h4>Débris</h4>
-          <small>Toujours fonctionnelles en présence de ceux-ci</small>
-        </div>
-        <div class="dur-b">
-          <p>Résistant à la poussière et à la résine</p>
-          <p>Chemins optiques autonettoyants</p>
-          <p>Boîtiers scellés résistants</p>
-        </div>
-      </div>
-      <div class="dur-c">
-        <div class="dur-h">
-          <div class="ico">〰️</div>
-          <h4>Vibration</h4>
-          <small>Tolérance en continu</small>
-        </div>
-        <div class="dur-b">
-          <p>Absorption des chocs de calibre industriel</p>
-          <p>Lectures stables sous machinerie lourde</p>
-          <p>Tolérance au désalignement</p>
-        </div>
+        <p style="margin:6px 0 12px;">Une ligne directe avec nos concepteurs et techniciens.</p>
+        <p>Vous parlez à des experts qui comprennent votre réalité opérationnelle, pas à un centre d'appels.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-
-<!-- ══════ Fabrication au quebec ══════ -->
+<!-- ══════ FABRIQUÉ AU QUÉBEC ══════ -->
 <section class="sec sec--dark">
   <div class="sec-inner">
     <h2 class="sec-title">Fabriqué <em>au Québec</em></h2>
     <p class="sec-desc">Distribués mondialement</p>
+    <p style="font-size:.7rem;color:#555;font-style:italic;margin-top:10px;">Version anglaise : « Manufactured in Canada — Distributed Worldwide »</p>
   </div>
 </section>
 
 
-<!-- 8. TÉMOIGNAGES -->
+<!-- ══════ TÉMOIGNAGES ══════ -->
 <section class="sec sec--gray">
   <div class="sec-inner">
-    <div class="sec-header"><p class="sec-label">Ce que les clients disent</p><h2 class="sec-title">Sur SCANMEG</h2></div>
+    <div style="margin-bottom:32px;">
+      <p class="sec-label">Ce que les clients disent</p>
+      <h2 class="sec-title">Sur SCANMEG</h2>
+    </div>
     <div class="temoignages-grid">
       <div class="temoignage">
         <blockquote>« Les produits SCANMEG nous ont permis des augmentations de productivité entre 5 et 10% au fil des années. Ces produits nous ont permis d'atteindre des améliorations de productivité considérables. »</blockquote>
@@ -273,40 +312,19 @@
         <cite><strong>Tom</strong>Britton Lumber Fairlee</cite>
       </div>
     </div>
+    <p style="font-size:.72rem;color:#aaa;font-style:italic;margin-top:20px;">Capacité : jusqu'à 9 témoignages — versions FR et EN indépendantes</p>
   </div>
 </section>
-
-
-<!-- ══════ TÉMOIGNAGES ══════
-<section class="sec sec--dark">
-  <div class="sec-inner">
-    <div class="sec-label">Témoignages</div>
-    <h2 class="sec-title">Ce que les clients disent <em>sur SCANMEG</em></h2>
-    <div style="margin-bottom:32px;"></div>
-    <div class="svc-c">
-      <q>Les produits SCANMEG nous ont permis des augmentations de productivité entre 5 et 10% au fil des années. Certes il existe d'autres marques de produits de détection mais ces derniers sont avec des plages fixes et ne correspondent pas toujours aux besoins de l'industrie du sciage. Les produits SCANMEG ont été développés en tenant compte des contraintes de poussières, de vibrations et fonctionnent même lorsqu'ils sont installés dans un environnement sévère.</q>
-      <div class="testi-auth">— Claude, Résolu. Produits forestiers</div>
-    </div>
-    <div style="height:32px;"></div>
-    <div class="svc-c">
-      <q>Dans l'application de la refendeuse USNR, nous avons inclus deux systèmes de mesurage des blocs. Pour ce faire, nous avons utilisé les détecteurs de marque SCANMEG qui ont très bien répondu à nos attentes pour cette application. De plus, le service technique des gens de SCANMEG à été d'un grand support pour nos programmeurs</q>
-      <div class="testi-auth">— Jacques, USNR</div>
-    </div>
-    <div style="height:32px;"></div>
-    <div class="svc-c">
-      <q>Très facile à utiliser! On a eu seulement à modifier les supports / garde où étaient installés les capteurs Banners, on a installé les P150 face à face, on les a câblés et le tour était joué. Je n'ai pas eu à passer les 45 minutes habituellement requises avec les Banners afin de les aligner, les incliner ou de vérifier les angles de vision. Un autre grand produit de SCANMEG !</q>
-      <div class="testi-auth">— Tom, Britton Lumber Fairlee</div>
-    </div>
-  </div>
-</section> -->
 
 
 <!-- ══════ CTA ══════ -->
 <div class="cta">
   <h2>Prêt à optimiser votre production?</h2>
   <p>Décrivez votre défi — un spécialiste vous répond sous 48h.</p>
-  <a href="produits.html" class="btn btn-dark">Voir les produits→</a>
-    <a href="contact.html" class="btn btn-dark">Parlons-en →</a>
+  <div class="cta-btns">
+    <a href="produits.html" class="btn btn-dark">Voir les produits →</a>
+    <a href="contact.html" class="btn btn-dark">Contactez-nous →</a>
+  </div>
 </div>
 
 
@@ -318,8 +336,7 @@
       <p class="ftr-desc">SCANMEG conçoit des systèmes de détection et de mesure robustes et fiables pour les environnements les plus exigeants de la transformation du bois.</p>
       <p class="ftr-info"><strong>Tél :</strong> 450 419 4555</p>
       <p class="ftr-info"><strong>Courriel :</strong> ventes@scanmeg.com</p>
-      <a href="#" class="ftr-info">Linkedin</a> / 
-      <a href="#" class="ftr-info">Facebook</a>
+      <a href="#" class="ftr-info">LinkedIn</a>
     </div>
     <div class="ftr-col">
       <h4>Navigation</h4>
@@ -345,10 +362,8 @@
     <div class="ftr-col">
       <h4>Siège social</h4>
       <p class="ftr-info">3517 Boul. De La Grande Allée<br>Boisbriand, QC J7H 1H5<br>Canada</p>
-      <h4 style="margin-top:16px;">Bureaux</h4>
-      <p class="ftr-info">SCANMEG West — Surrey, BC</p>
-      <p class="ftr-info">SCANMEG Europe — France</p>
-      <p class="ftr-info">SCANMEG Japon</p>
+      <p class="ftr-info" style="margin-top:10px;"><strong>Tél :</strong> 450 419 4555</p>
+      <p class="ftr-info"><strong>Courriel :</strong> ventes@scanmeg.com</p>
     </div>
   </div>
   <div class="ftr-bot">
@@ -357,10 +372,17 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var btn = document.querySelector(".hamburger");
   var nav = document.querySelector(".nav");
   if(btn && nav){
-    btn.addEventListener("click", function(){
-      nav.classList
+    btn.addEventListener("click", function(){ nav.classList.toggle("open"); });
+    document.addEventListener("click", function(e){
+      if(!btn.contains(e.target) && !nav.contains(e.target)) nav.classList.remove("open");
+    });
+  }
+})();
+</script>
+</body>
+</html>
